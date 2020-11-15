@@ -3,11 +3,23 @@ import express = require('express');
 // import routes
 import {IndexRoutes} from "./routes/index.routes";
 
+// middleware
+import responseMiddleware from "./middlewares/response.middleware";
+import errorMiddleware from "./middlewares/error.middleware";
+import {MicroServiceApp} from "../app";
+
 // library references
 const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
+// micro service app
+// try {
+//     const microServiceApp = require('../app');
+// } catch(e) {
+//     console.log('No specific micros service app')
+// }
 
 // storing express instance
 const app = express();
@@ -28,11 +40,18 @@ Promise.all([]).then(results => {
 
     // routes definition
     app.use('/', IndexRoutes);
+    new MicroServiceApp().setRoutes(app)
 
     // catch 404 and forward to error handler
     app.use(function (req, res, next) {
         next(createError(404));
     });
+
+    // intranet response handler
+    app.use(responseMiddleware);
+
+    // intranet error handler
+    app.use(errorMiddleware);
 
     // error handler
     app.use(function (err, req, res, next) {

@@ -1,6 +1,17 @@
 #!/usr/bin/env node
 
 /**
+ * Specific run of the microservice
+ */
+
+try {
+    const www = require('../../bin/www')
+} catch (e) {
+    console.log('Specific microservice run rutine not found')
+}
+
+
+/**
  * Module dependencies.
  */
 
