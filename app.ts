@@ -14,18 +14,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-// micro service app
-// try {
-//     const microServiceApp = require('../app');
-// } catch(e) {
-//     console.log('No specific micros service app')
-// }
+// microservice instance
+const microServiceApp = new MicroServiceApp()
 
 // storing express instance
 const app = express();
 
 // synchronous process
-Promise.all([]).then(results => {
+Promise.all([].concat(microServiceApp.getSyncProcess())).then(results => {
+    console.log("Sync process finished");
 
     // view engine setup
     app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +37,7 @@ Promise.all([]).then(results => {
 
     // routes definition
     app.use('/', IndexRoutes);
-    new MicroServiceApp().setRoutes(app)
+    microServiceApp.setRoutes(app)
 
     // catch 404 and forward to error handler
     app.use(function (req, res, next) {
