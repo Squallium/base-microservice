@@ -2,6 +2,7 @@ import express = require('express');
 
 // import routes
 import {IndexRoutes} from "./routes/index.routes";
+import {MigrationRoutes} from "./routes/migration.routes";
 
 // middleware
 import responseMiddleware from "./middlewares/response.middleware";
@@ -37,6 +38,7 @@ Promise.all([].concat(microServiceApp.getSyncProcess())).then(results => {
 
     // routes definition
     app.use('/', IndexRoutes);
+    app.use('/migrations', MigrationRoutes)
     microServiceApp.setRoutes(app)
 
     // catch 404 and forward to error handler
