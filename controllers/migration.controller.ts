@@ -23,7 +23,7 @@ export class MigrationController {
             console.log(key)
         }
 
-        if (process.env.ENV == 'dev') {
+        if (process.env.ENV == 'pro') {
             this.migrationService.getConnection(database, coll_name).then(collection => {
                 if (collection) {
                     const query: any = req.query;
