@@ -7,9 +7,10 @@ import {MigrationRoutes} from "./routes/migration.routes";
 import responseMiddleware from "./middlewares/response.middleware";
 import errorMiddleware from "./middlewares/error.middleware";
 import {MicroServiceApp} from "../app";
+import {MigrationService} from "./migration.service";
+
 // Lazy Begin Imports
 import {CoreConn} from "./connections/core.conn";
-import {MigrationService} from "./migration.service";
 // Lazy End Imports
 
 // library references
