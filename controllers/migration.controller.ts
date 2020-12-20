@@ -2,7 +2,7 @@ import {BaseResponse} from "../responses/base.response";
 import {BaseError} from "../errors/base.error";
 import {MigrationError} from "../errors/migration.error";
 import {MigrationResponse} from "../../responses/migration.response";
-import {CodesResponse} from "../../responses/codes.response";
+import {VineCodesResponse} from "../../responses/vine-codes.response";
 import {CodesError} from "../errors/codes.error";
 import {MigrationService} from "../migration.service";
 
@@ -35,7 +35,7 @@ export class MigrationController {
                         if (err) {
                             callback(MigrationError.unknown(err.message), null);
                         } else {
-                            const response: MigrationResponse = MigrationResponse.instance(CodesResponse.ITEMS_FOUND);
+                            const response: MigrationResponse = MigrationResponse.instance(VineCodesResponse.ITEMS_FOUND);
                             response.items = items;
                             callback(null, response);
                         }
@@ -61,14 +61,14 @@ export class MigrationController {
                     if (Array.isArray(req.body)) {
                         this.migrationService.convertItems(req.body, coll_name);
                         collection.insertMany(req.body).then(itemsSaved => {
-                            callback(null, MigrationResponse.instance(CodesResponse.ITEMS_SAVED));
+                            callback(null, MigrationResponse.instance(VineCodesResponse.ITEMS_SAVED));
                         }).catch(err => {
                             callback(MigrationError.unknown(err.message), null);
                         });
                     } else {
                         this.migrationService.convertItem(req.body, coll_name)
                         collection.insertOne(req.body).then(itemSaved => {
-                            callback(null, MigrationResponse.instance(CodesResponse.ITEM_SAVED));
+                            callback(null, MigrationResponse.instance(VineCodesResponse.ITEM_SAVED));
                         }).catch(err => {
                             callback(MigrationError.unknown(err.message), null);
                         });
@@ -93,7 +93,7 @@ export class MigrationController {
             this.migrationService.getConnection(database, coll_name).then(collection => {
                 if (collection) {
                     collection.deleteMany({}).then(itemsDeleted => {
-                        callback(null, MigrationResponse.instance(CodesResponse.ITEMS_DELETED));
+                        callback(null, MigrationResponse.instance(VineCodesResponse.ITEMS_DELETED));
                     }).catch(err => {
                         callback(MigrationError.unknown(err.message), null);
                     });
