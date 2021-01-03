@@ -3,6 +3,7 @@ import express = require('express');
 // import routes
 import {IndexRoutes} from "./routes/index.routes";
 import {MigrationRoutes} from "./routes/migration.routes";
+import {ReportRoutes} from "./routes/report.routes";
 // middleware
 import responseMiddleware from "./middlewares/response.middleware";
 import errorMiddleware from "./middlewares/error.middleware";
@@ -57,6 +58,7 @@ Promise.all([
     // routes definition
     app.use('/', IndexRoutes);
     app.use('/migrations', MigrationRoutes)
+    app.use('/reports', ReportRoutes)
     microServiceApp.setRoutes(app)
 
     // Pass all configuration settings to AdminBro

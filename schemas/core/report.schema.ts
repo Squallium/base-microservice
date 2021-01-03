@@ -5,19 +5,26 @@ const reportCounterSchema = new Schema({
     value: {type: Number},
 });
 
+const reportTimerSchema = new Schema({
+    start: {type: Date},
+    stop: {type: Date},
+    duration: {type: String},
+});
+
 export const ReportSchema = new Schema({
     project: {type: Schema.Types.ObjectId, ref: 'Project', required: true},
     activity: {type: Schema.Types.ObjectId, ref: 'Activity', required: true},
     jobVersion: {type: String},
     taskVersion: {type: String},
     date: {type: String},
-    time: {type: String},
+    time: {type: Date},
     endDate: {type: String},
     duration: {type: String},
     status: {type: String},
     branch: {type: String},
     version: {type: String},
-    counters: [reportCounterSchema]
+    counters: [reportCounterSchema],
+    timers: [reportTimerSchema]
 }, {
     timestamps: true,
 });
