@@ -15,4 +15,11 @@ export class BaseError extends Error {
         this.code = code;
         this.verbose = verbose
     }
+
+    static unknown(message: any, errorClass: any): BaseError {
+        // if the error is unknown better to show the error in somewhere
+        console.error(message);
+
+        return new errorClass(500, message, this.UNKNOWN_ERROR);
+    }
 }

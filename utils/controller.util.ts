@@ -8,7 +8,7 @@ export class ControllerUtil {
         if (error && error.code && error.message) {
             callback(new errorClass(500, error.message, error.code), null);
         } else {
-            callback(error ? error : OrderError.unknown(error.message), null);
+            callback(error ? error : BaseError.unknown(error.message, errorClass), null);
         }
     }
 }
