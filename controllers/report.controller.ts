@@ -65,7 +65,7 @@ export class ReportController {
             callback(null, response);
         }).catch(error => {
             console.log(error);
-            ControllerUtil.manageUnknownError(error, callback);
+            ControllerUtil.manageUnknownError(error, ReportError, callback);
         });
     }
 
