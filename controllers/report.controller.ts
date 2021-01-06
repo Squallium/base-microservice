@@ -13,7 +13,7 @@ import {IProject} from "../models/core/project.model";
 import {IActivity} from "../models/core/activity.model";
 import {ReportService} from "../services/report.service";
 import {CodesResponse} from "../responses/codes.response";
-import {ControllerUtil} from "../../utils/controller.util";
+import {ControllerUtil} from "../utils/controller.util";
 
 export class ReportController {
 
