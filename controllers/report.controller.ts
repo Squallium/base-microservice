@@ -13,6 +13,7 @@ import {IProject} from "../models/core/project.model";
 import {IActivity} from "../models/core/activity.model";
 import {ReportService} from "../services/report.service";
 import {CodesResponse} from "../responses/codes.response";
+import {ControllerUtil} from "../../utils/controller.util";
 
 export class ReportController {
 
@@ -64,7 +65,7 @@ export class ReportController {
             callback(null, response);
         }).catch(error => {
             console.log(error);
-            callback(error ? error : ReportError.unknown(error.message), null);
+            ControllerUtil.manageUnknownError(error, callback);
         });
     }
 
