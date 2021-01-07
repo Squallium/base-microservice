@@ -10,7 +10,6 @@ export const ProjectSchema = new Schema({
     url: {type: String},
     startDate: {type: String},
     technologies: [{type: Schema.Types.ObjectId, ref: 'Technology'}],
-    currentVersion: {type: Schema.Types.ObjectId, ref: 'ProjectVersion'},
 }, {
     timestamps: true,
 });
