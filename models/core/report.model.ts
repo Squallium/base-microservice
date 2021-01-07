@@ -11,6 +11,7 @@ export interface IReportCounter extends Document {
 }
 
 export interface IReportTimer extends Document {
+    name: string;
     start: Date;
     stop: Date;
     duration: string;

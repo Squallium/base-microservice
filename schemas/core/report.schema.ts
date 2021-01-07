@@ -6,6 +6,7 @@ const reportCounterSchema = new Schema({
 });
 
 const reportTimerSchema = new Schema({
+    name: {type: String},
     start: {type: Date},
     stop: {type: Date},
     duration: {type: String},

@@ -142,6 +142,7 @@ export class ReportController {
         if (data.branch) report.branch = data.branch;
         if (data.version) report.version = data.version;
         if (data.counters) report.counters = data.counters;
+        if (data.timers) report.timers = data.timers;
     }
 
     private setSpecificFields(report: IReport, data: any): Promise<boolean> {
