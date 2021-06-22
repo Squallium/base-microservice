@@ -31,12 +31,14 @@ export class TableStateModel extends BaseModel {
     paginator: PaginatorStateModel;
     sorting: SortStateModel;
     searchTerm: string;
+    scan: ScanModel;
 
     constructor(data: object) {
         super(data);
 
         this.paginator = new PaginatorStateModel(data['paginator']);
         this.sorting = new SortStateModel(data['sorting']);
+        this.scan = new ScanModel(data['scan']);
     }
 }
 
@@ -54,4 +56,9 @@ export class SortStateModel extends BaseModel {
         result[this.column] = this.direction;
         return result;
     }
+}
+
+export class ScanModel extends BaseModel {
+    ageDays: number;
+    lastScanDays: number;
 }
