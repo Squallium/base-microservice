@@ -2,9 +2,9 @@ import {BaseResponse} from './base.response';
 
 
 export class TableStateResponse extends BaseResponse {
-    items: object;
-    total: number;
-    filters: object;
+    public items: object;
+    public total: number;
+    public filters: object;
 
     buildData(): object {
         if (Array.isArray(this.items)) {
