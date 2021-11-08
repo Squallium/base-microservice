@@ -13,7 +13,7 @@ export class TableStateController {
         this.tableStateService = tableStateService;
     }
 
-    find(body: any, response: TableStateResponse, errorClass: BaseError, callback: (err: BaseError, response: BaseResponse) => void): void {
+    find(body: any, response: TableStateResponse, errorClass: any, callback: (err: BaseError, response: BaseResponse) => void): void {
         console.warn(`Filter requested: ${JSON.stringify(body)}`)
 
         const tableState: TableStateModel = new TableStateModel(body);
