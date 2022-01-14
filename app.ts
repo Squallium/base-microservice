@@ -27,12 +27,13 @@ const microServiceApp = new MicroServiceApp()
 // storing express instance
 const app = express();
 
-// admin bro
-const AdminBro = require('admin-bro');
-const AdminBroExpressjs = require('admin-bro-expressjs');
+// admin js (former admin bro)
+const AdminJS = require('adminjs')
+const AdminJSExpress = require('@adminjs/express')
+const AdminJSMongoose = require('@adminjs/mongoose')
 
 // We have to tell AdminBro that we will manage mongoose resources with it
-AdminBro.registerAdapter(require('admin-bro-mongoose'));
+AdminJS.registerAdapter(AdminJSMongoose);
 
 // register connections for migration
 new MigrationService().registerConnection('core', CoreConn);
@@ -64,7 +65,7 @@ Promise.all([
     microServiceApp.setRoutes(app)
 
     // Pass all configuration settings to AdminBro
-    const adminBro = new AdminBro({
+    const adminBro = new AdminJS({
         resources: [
             // Lazy Begin Bro
             CoreConn.model('Activity'),
@@ -84,7 +85,7 @@ Promise.all([
     });
 
     // Build and use a router which will handle all AdminBro routes
-    const router = AdminBroExpressjs.buildRouter(adminBro);
+    const router = AdminJSExpress.buildRouter(adminBro);
     app.use(adminBro.options.rootPath, router);
 
     // catch 404 and forward to error handler
