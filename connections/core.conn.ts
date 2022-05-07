@@ -1,4 +1,4 @@
-import {createConnection, Model} from "mongoose";
+import {ConnectOptions, createConnection, Model} from "mongoose";
 
 // Lazy Begin Imports
 import {ActivitySchema} from "../schemas/core/activity.schema";
@@ -26,10 +26,7 @@ import {ITechnologyType} from "../models/core/technology-type.model";
 // Lazy End Imports
 
 const uri = process.env.MONGO_URI_CORE;
-const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-};
+const options: ConnectOptions = {};
 export const CoreConn = createConnection(uri, options);
 
 // Lazy Begin
