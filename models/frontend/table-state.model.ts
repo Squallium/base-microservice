@@ -51,10 +51,10 @@ export class SortStateModel extends BaseModel {
     column: string;
     direction: string;
 
-    query(): object {
+    query(): string {
         const result: object = {}
         result[this.column] = this.direction;
-        return result;
+        return result.toString();
     }
 }
 
